@@ -6,9 +6,6 @@ namespace NoSnowballKnockback
     [BepInPlugin("monky.nosnowballknockback", "NoSnowballKnockback", "1.0.0")]
     public class Plugin : BaseUnityPlugin
     {
-        
-        bool enabled;
-
         void Start()
         { 
             Harmony.CreateAndPatchAll(GetType().Assembly, "monky.nosnowballknockback");
@@ -18,11 +15,11 @@ namespace NoSnowballKnockback
         {
             if (NetworkSystem.Instance.GameModeString.Contains("MODDED"))
             {
-                Patches.BigBallKnockbackPatch.enable = true;
+                Patches.KnockbackPatch.enabled = true;
             }
             else
             {
-                Patches.BigBallKnockbackPatch.enable = false;
+                Patches.KnockbackPatch.enabled = false;
             }
         }
     }
