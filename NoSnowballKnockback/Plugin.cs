@@ -14,19 +14,9 @@ namespace NoSnowballKnockback
             Harmony.CreateAndPatchAll(GetType().Assembly, "monky.nosnowballknockback");
         }
 
-        void OnDisable()
-        {
-            enabled = false;
-        }
-
-        void OnEnable()
-        {
-            enabled = true;
-        }
-
         void Update()
         {
-            if (NetworkSystem.Instance.GameModeString.Contains("MODDED") && enabled)
+            if (NetworkSystem.Instance.GameModeString.Contains("MODDED"))
             {
                 Patches.BigBallKnockbackPatch.enable = true;
             }
